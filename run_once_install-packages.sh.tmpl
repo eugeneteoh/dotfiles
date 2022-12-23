@@ -7,7 +7,7 @@ sudo apt-get install -y vim wget git build-essential
 # Install miniconda
 if ! conda --version
 then
-    MINICONDA_FILE=Miniconda3-py39_4.9.2-Linux-x86_64.sh
+    MINICONDA_FILE=Miniconda3-latest-Linux-x86_64.sh
     wget https://repo.anaconda.com/miniconda/$MINICONDA_FILE
 
     # check the SHA256sum of Miniconda before executing.
@@ -28,7 +28,7 @@ fi
 
 if ! conda --version
 then
-    MINICONDA_FILE=Miniconda3-py39_4.9.2-MacOSX-x86_64.sh
+    MINICONDA_FILE=Miniconda3-latest-MacOSX-x86_64.sh
     wget https://repo.anaconda.com/miniconda/$MINICONDA_FILE
     echo "b3bf77cbb81ee235ec6858146a2a84d20f8ecdeb614678030c39baacb5acbed1 $MINICONDA_FILE" | sha256sum --check || exit 1
     bash $MINICONDA_FILE
