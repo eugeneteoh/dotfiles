@@ -4,6 +4,8 @@ sudo apt-get update
 sudo apt install zsh
 sudo apt-get install -y vim wget git build-essential
 
+chsh -s $(which zsh)
+
 # Install miniconda
 if ! conda --version
 then
@@ -12,7 +14,7 @@ then
 
     # check the SHA256sum of Miniconda before executing.
     echo "536817d1b14cb1ada88900f5be51ce0a5e042bae178b5550e62f61e223deae7c $MINICONDA_FILE" | sha256sum --check || exit 1
-    bash $MINICONDA_FILE
+    zsh $MINICONDA_FILE
 fi
 
 {{ else if eq .chezmoi.os "darwin" -}}
