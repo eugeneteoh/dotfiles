@@ -13,7 +13,7 @@ then
     wget https://repo.anaconda.com/miniconda/$MINICONDA_FILE
 
     # check the SHA256sum of Miniconda before executing.
-    echo "536817d1b14cb1ada88900f5be51ce0a5e042bae178b5550e62f61e223deae7c $MINICONDA_FILE" | sha256sum --check || exit 1
+    echo "00938c3534750a0e4069499baf8f4e6dc1c2e471c86a59caa0dd03f4a9269db6 $MINICONDA_FILE" | sha256sum --check || exit 1
     zsh $MINICONDA_FILE
 fi
 
@@ -32,7 +32,7 @@ if ! conda --version
 then
     MINICONDA_FILE=Miniconda3-latest-MacOSX-x86_64.sh
     wget https://repo.anaconda.com/miniconda/$MINICONDA_FILE
-    echo "b3bf77cbb81ee235ec6858146a2a84d20f8ecdeb614678030c39baacb5acbed1 $MINICONDA_FILE" | sha256sum --check || exit 1
+    echo "7406579393427eaf9bc0e094dcd3c66d1e1b93ee9db4e7686d0a72ea5d7c0ce5 $MINICONDA_FILE" | sha256sum --check || exit 1
     bash $MINICONDA_FILE
 fi
 
