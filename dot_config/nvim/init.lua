@@ -14,9 +14,7 @@ local function ensure_packer()
   return false
 end
 
--- You can "comment out" the line below after packer is installed
 local install_plugins = ensure_packer()
--- local install_plugins = true
 
 require('packer').startup(function(use)
   use {'wbthomason/packer.nvim'}
@@ -30,7 +28,7 @@ require('packer').startup(function(use)
         -- refer to the configuration section below
       })
     end
-  })
+  }) 
 
   if install_plugins then
     require('packer').sync()
@@ -52,10 +50,10 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
-vim.keymap.set({'n', 'x'}, '<C-c>', '"+y', {noremap=true, silent=true})
-vim.keymap.set({'n', 'x'}, '<C-x>', '+c', {noremap=true, silent=true})
-vim.keymap.set({'n', 'x'}, '<C-v>', '"+p', {noremap=true, silent=true})
-vim.keymap.set('i', '<C-v>', '<C-r><C-o>+')
+vim.keymap.set({'n', 'v'}, '<C-c>', '"+y', {noremap=true, silent=true})
+vim.keymap.set({'n', 'v'}, '<C-x>', '+c', {noremap=true, silent=true})
+vim.keymap.set({'n', 'v'}, '<C-v>', '"+p', {noremap=true, silent=true})
+vim.keymap.set('i', '<C-v>', '<C-r><C-o>+', {noremap=true, silent=true})
 
 -- readline.nvim
 local readline = require 'readline'
