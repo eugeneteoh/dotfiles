@@ -49,9 +49,10 @@ end
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.mouse = "a"
 
 vim.keymap.set({'n', 'v'}, '<C-c>', '"+y', {noremap=true, silent=true})
-vim.keymap.set({'n', 'v'}, '<C-x>', '+c', {noremap=true, silent=true})
+vim.keymap.set({'n', 'v'}, '<C-x>', 'c', {noremap=true, silent=true})
 vim.keymap.set({'n', 'v'}, '<C-v>', '"+p', {noremap=true, silent=true})
 vim.keymap.set('i', '<C-v>', '<C-r><C-o>+', {noremap=true, silent=true})
 
