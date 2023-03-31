@@ -6,6 +6,10 @@ sudo apt-get install -y vim wget git build-essential
 
 chsh -s $(which zsh)
 
+# Install nvim
+curl -OL https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+tar xzvf nvim-linux64.tar.gz -C ~/.local --strip-components=1
+
 # Install miniconda
 if ! conda --version
 then
