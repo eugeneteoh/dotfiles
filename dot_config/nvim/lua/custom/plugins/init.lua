@@ -2,4 +2,10 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+    "linty-org/readline.nvim",
+    "gbprod/cutlass.nvim",
+    config = function()
+        require("cutlass").setup({})
+    end
+}
