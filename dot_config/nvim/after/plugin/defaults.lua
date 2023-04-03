@@ -14,3 +14,8 @@ vim.keymap.set('!', '<M-BS>', readline.backward_kill_word)
 vim.keymap.set('!', '<C-w>', readline.unix_word_rubout)
 vim.keymap.set('!', '<C-k>', readline.kill_line)
 vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
+
+-- nvim-osc52
+vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)

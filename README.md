@@ -1,6 +1,6 @@
 # dotfiles
 
-Managed by [chezmoi](https://www.chezmoi.io/).
+Managed using [chezmoi](https://www.chezmoi.io/).
 
 ## Usage
 
