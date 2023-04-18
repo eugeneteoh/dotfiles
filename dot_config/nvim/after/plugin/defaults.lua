@@ -19,3 +19,7 @@ vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
 vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
 vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
 vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+
+-- Indent without leaving visual mode
+vim.keymap.set('v', '>', '>gv', {remap = false})
+vim.keymap.set('v', '<', '<gv', {remap = false})
