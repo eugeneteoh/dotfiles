@@ -13,6 +13,7 @@ end
 -- This is where you actually apply your config choices
 
 config.audible_bell = 'Disabled'
+config.use_ime = false
 
 -- and finally, return the configuration to wezterm
 return config
