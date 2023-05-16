@@ -23,3 +23,6 @@ vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
 -- Indent without leaving visual mode
 vim.keymap.set('v', '>', '>gv', {remap = false})
 vim.keymap.set('v', '<', '<gv', {remap = false})
+
+-- Delete without copy
+vim.keymap.set({'n', 'v'}, 'd', '"_d', {remap = false})
