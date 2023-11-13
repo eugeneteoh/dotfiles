@@ -3,7 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-    "linty-org/readline.nvim",
+    "assistcontrol/readline.nvim",
     "gbprod/cutlass.nvim",
     config = function()
         require("cutlass").setup({})
