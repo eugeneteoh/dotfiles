@@ -10,10 +10,6 @@ chsh -s $(which zsh)
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 tar xzvf nvim-linux64.tar.gz -C ~/.local --strip-components=1
 
-# Install WezTerm
-curl -LO https://github.com/wez/wezterm/releases/download/20230408-112425-69ae8472/wezterm-20230408-112425-69ae8472.Ubuntu20.04.deb
-sudo apt install -y ./wezterm-20230408-112425-69ae8472.Ubuntu20.04.deb
-
 # Install miniconda
 if ! conda --version
 then
