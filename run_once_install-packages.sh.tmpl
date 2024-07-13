@@ -29,13 +29,4 @@ then
 fi
 
 
-if ! conda --version
-then
-    MINICONDA_FILE=Miniconda3-latest-MacOSX-x86_64.sh
-    wget https://repo.anaconda.com/miniconda/$MINICONDA_FILE
-    echo "7406579393427eaf9bc0e094dcd3c66d1e1b93ee9db4e7686d0a72ea5d7c0ce5 $MINICONDA_FILE" | sha256sum --check || exit 1
-    bash $MINICONDA_FILE
-fi
-
-
 {{ end -}}
