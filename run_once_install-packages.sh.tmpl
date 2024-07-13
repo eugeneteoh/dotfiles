@@ -21,6 +21,8 @@ fi
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
+xcode-select --install
+
 # Install homebrew if it's not there already.
 if ! brew --version
 then
