@@ -21,6 +21,9 @@ fi
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
+# Enable key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 xcode-select --install
 
 # Install homebrew if it's not there already.
