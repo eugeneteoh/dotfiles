@@ -13,10 +13,9 @@ sudo chsh -s "$(which zsh)" $USER
 {{ end }}
 
 # Install Neovim
-curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-mkdir -p ~/.local/nvim
-tar xzvf nvim-linux64.tar.gz -C ~/.local/nvim --strip-components=1 >/dev/null 2>&1
-rm nvim-linux64.tar.gz
+mkdir -p ~/bin
+curl -Lo ~/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x ~/bin/nvim
 
 {{ if not .devcontainer }}
 # Install Miniforge (Conda)
