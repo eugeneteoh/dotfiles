@@ -15,7 +15,7 @@ sudo chsh -s "$(which zsh)" $USER
 # Install Neovim
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 mkdir -p ~/.local/nvim
-tar xzvf nvim-linux64.tar.gz -C ~/.local/nvim --strip-components=1
+tar xzvf nvim-linux64.tar.gz -C ~/.local/nvim --strip-components=1 >/dev/null 2>&1
 rm nvim-linux64.tar.gz
 
 {{ if not .devcontainer }}
