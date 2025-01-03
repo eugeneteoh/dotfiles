@@ -6,7 +6,11 @@ sudo apt-get update
 sudo apt-get install -y zsh vim wget git build-essential
 
 # Change default shell to zsh
+{{ if not .devcontainer }}
 chsh -s "$(which zsh)"
+{{ else }}
+sudo chsh -s "$(which zsh)" $USER
+{{ end }}
 
 # Install Neovim
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
