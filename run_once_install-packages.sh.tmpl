@@ -1,21 +1,24 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/sh
+
+# Update package list and install essential tools
 sudo apt-get update
-sudo apt install zsh
-sudo apt-get install -y vim wget git build-essential
+sudo apt-get install -y zsh vim wget git build-essential
 
-chsh -s $(which zsh)
+# Change default shell to zsh
+chsh -s "$(which zsh)"
 
-# Install nvim
+# Install Neovim
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-tar xzvf nvim-linux64.tar.gz -C ~/.local --strip-components=1
+mkdir -p ~/.local/nvim
+tar xzvf nvim-linux64.tar.gz -C ~/.local/nvim --strip-components=1
+rm nvim-linux64.tar.gz
 
-# Install miniconda
-if ! conda --version
-then
-    MINICONDA_FILE=Miniconda3-latest-Linux-x86_64.sh
-    wget https://repo.anaconda.com/miniconda/$MINICONDA_FILE
-    bash $MINICONDA_FILE
+# Install Miniforge (Conda)
+if ! command -v conda >/dev/null 2>&1; then
+    curl -LO "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+    bash Miniforge3-$(uname)-$(uname -m).sh -b
+    rm Miniforge3-$(uname)-$(uname -m).sh
 fi
 
 {{ else if eq .chezmoi.os "darwin" -}}
@@ -24,14 +27,22 @@ fi
 # Enable key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
+# Install Xcode command-line tools
 xcode-select --install
 
-# Install homebrew if it's not there already.
-if ! brew --version
-then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew install coreutils wget vim git
+# Install Homebrew if not installed
+if ! command -v brew >/dev/null 2>&1; then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# Install essential tools using Homebrew
+brew install coreutils wget vim git neovim
+
+# Install Miniforge (Conda)
+if ! command -v conda >/dev/null 2>&1; then
+    curl -LO "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+    bash Miniforge3-$(uname)-$(uname -m).sh -b
+    rm Miniforge3-$(uname)-$(uname -m).sh
+fi
 
 {{ end -}}
