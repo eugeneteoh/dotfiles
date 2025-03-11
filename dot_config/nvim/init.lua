@@ -203,18 +203,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Copy/Cut/Paste key mapping
--- macOS Keybindings
-vim.keymap.set('v', '<D-c>', '"+y', { noremap = true, silent = true }) -- Cmd+C
-vim.keymap.set('v', '<C-x>', '"+d', { noremap = true, silent = true }) -- Cmd+X
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-v>', '"+p', { noremap = true, silent = true }) -- Cmd+V
-
 -- Indent without leaving visual mode
 vim.keymap.set('v', '>', '>gv', { remap = false })
 vim.keymap.set('v', '<', '<gv', { remap = false })
 
 -- Delete without copy
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d', { remap = false })
+
+-- Use OSC52 for the clipboard
+-- so that it works for ssh connections
+-- Only works if terminal emulator supports it (iTerm, WezTerm)
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+  },
+}
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
