@@ -30,4 +30,4 @@ data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   devcontainer: {{ $devcontainer }}
-  runSudo: {{ promptBool "runSudo" }}
+  runSudo: {{ promptBoolOnce . "Run sudo commands" "runSudo" }}
