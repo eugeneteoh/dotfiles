@@ -2,8 +2,10 @@
 #!/bin/sh
 
 # Update package list and install essential tools
-sudo apt-get update
-sudo apt-get install -y zsh vim wget git build-essential
+{{ if .runSudo }}
+sudo apt update
+sudo apt install -y zsh vim wget git build-essential
+{{ end }}
 
 # Change default shell to zsh
 {{ if not .devcontainer }}

@@ -1,3 +1,4 @@
+{{ $runSudo := promptBoolOnce . "runSudo" "Run sudo commands" }}
 {{- /* Checks if running interactively, which is not the case for GitHub Codespaces */ -}}
 {{- $interactive := stdinIsATTY -}}
 
