@@ -8,11 +8,7 @@ sudo apt install -y zsh vim wget git build-essential
 {{ end }}
 
 # Change default shell to zsh
-{{ if not .devcontainer }}
 chsh -s "$(which zsh)"
-{{ else }}
-sudo chsh -s "$(which zsh)" $USER
-{{ end }}
 
 # Install Neovim
 INSTALL_DIR="$HOME/nvim"
@@ -23,16 +19,6 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 tar -xzf nvim-linux64.tar.gz -C "$INSTALL_DIR" --strip-components=1
 rm nvim-linux64.tar.gz
 ln -sf "$INSTALL_DIR/bin/nvim" "$SYMLINK"
-
-{{ if not .devcontainer }}
-# Install Miniforge (Conda)
-if ! command -v conda >/dev/null 2>&1; then
-    curl -LO "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-    bash Miniforge3-$(uname)-$(uname -m).sh -b
-    rm Miniforge3-$(uname)-$(uname -m).sh
-    ~/miniforge3/condabin/conda init
-fi
-{{ end }}
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
@@ -49,6 +35,6 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # Install essential tools using Homebrew
-brew install coreutils wget vim git neovim miniforge tmux
+brew install coreutils wget vim git neovim tmux
 
 {{ end -}}
