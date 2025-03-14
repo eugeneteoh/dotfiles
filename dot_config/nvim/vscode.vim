@@ -5,6 +5,9 @@ set clipboard=unnamedplus
 vnoremap > >gv
 vnoremap < <gv
 
-" Delete without copying to register
+" Remap delete commands to avoid copying deleted text
 nnoremap d "_d
-vnoremap d "_
+nnoremap D "_D
+vnoremap d "_d
+nnoremap x "_x
+nnoremap X "_X
