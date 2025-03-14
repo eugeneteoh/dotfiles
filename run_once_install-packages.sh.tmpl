@@ -16,8 +16,8 @@ BIN_DIR="$HOME/bin"
 SYMLINK="$BIN_DIR/nvim"
 mkdir -p "$INSTALL_DIR" "$BIN_DIR"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-tar -xzf nvim-linux64.tar.gz -C "$INSTALL_DIR" --strip-components=1
-rm nvim-linux64.tar.gz
+tar -xzf nvim-linux-x86_64.tar.gz -C "$INSTALL_DIR" --strip-components=1
+rm nvim-linux-x86_64.tar.gz
 ln -sf "$INSTALL_DIR/bin/nvim" "$SYMLINK"
 
 {{ else if eq .chezmoi.os "darwin" -}}
