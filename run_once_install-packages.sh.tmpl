@@ -8,7 +8,12 @@ sudo apt install -y zsh vim wget git build-essential make unzip gcc ripgrep
 {{ end }}
 
 # Change default shell to zsh
-chsh -u "$USER" -s "$(which zsh)"
+{{ if .runSudo }}
+sudo chsh -s "$(which zsh)" "$USER"
+{{ else }}
+chsh -s "$(which zsh)" "$USER"
+{{ end }}
+
 
 # Install Neovim
 INSTALL_DIR="$HOME/nvim"
