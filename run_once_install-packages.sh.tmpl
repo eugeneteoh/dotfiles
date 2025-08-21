@@ -4,12 +4,17 @@
 # Update package list and install essential tools
 {{ if .runSudo }}
 sudo apt update
-sudo apt install -y zsh vim wget git build-essential make unzip gcc ripgrep
+{{ if .isServer -}}
+sudo apt install -y zsh vim wget git ripgrep
+{{- else -}}
+sudo apt install -y zsh vim wget git build-essential make unzip gcc ripgrep tmux
+{{- end }}
 {{ end }}
 
 # Change default shell to zsh
 chsh -s "$(which zsh)"
 
+{{ if not .isServer -}}
 # Install Neovim
 INSTALL_DIR="$HOME/nvim"
 BIN_DIR="$HOME/bin"
@@ -19,6 +24,7 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x8
 tar -xzf nvim-linux-x86_64.tar.gz -C "$INSTALL_DIR" --strip-components=1
 rm nvim-linux-x86_64.tar.gz
 ln -sf "$INSTALL_DIR/bin/nvim" "$SYMLINK"
+{{- end }}
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
@@ -34,7 +40,12 @@ if ! command -v brew >/dev/null 2>&1; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install essential tools using Homebrew
-brew install coreutils wget vim git neovim tmux
+{{ if .isServer -}}
+# Install essential tools using Homebrew (server-minimal)
+brew install coreutils wget vim git ripgrep
+{{- else -}}
+# Install essential tools using Homebrew (desktop-full)
+brew install coreutils wget vim git neovim tmux ripgrep
+{{- end }}
 
 {{ end -}}

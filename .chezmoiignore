@@ -2,3 +2,11 @@
 install.sh
 LICENSE
 README.md
+
+{{- /* Exclude desktop-only configs on servers */ -}}
+{{- if .isServer -}}
+dot_wezterm.lua
+dot_tmux.conf
+dot_p10k.zsh
+.oh-my-zsh/**
+{{- end -}}
