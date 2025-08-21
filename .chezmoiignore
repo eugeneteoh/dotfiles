@@ -2,3 +2,8 @@
 install.sh
 LICENSE
 README.md
+
+{{- /* Exclude desktop-only configs on servers */ -}}
+{{- if .isServer -}}
+dot_wezterm.lua
+{{- end -}}

@@ -27,3 +27,6 @@ data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   runSudo: {{ promptBoolOnce . "Run sudo commands" "runSudo" }}
+  # Whether this machine should receive minimal/server configs
+  # Prompt only when interactive; default to false (desktop) when non-interactive
+  isServer: {{ if $interactive }}{{ promptBoolOnce . "Install minimal server configs?" "isServer" }}{{ else }}false{{ end }}
