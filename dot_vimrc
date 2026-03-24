@@ -412,22 +412,26 @@ endfunction
 set mouse=a
 
 " Sync with system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Remap marks (easyclip uses 'm' for cut)
 nnoremap gm m
 
-" OSC52 - auto-yank to terminal clipboard on every yank
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankRegister "' | endif
+" OSC52 - auto-sync to terminal clipboard on yank and cut
+autocmd TextYankPost * if v:event.operator is 'y' || v:event.operator is 'd' | execute 'OSCYankRegister "' | endif
 
-" Ctrl+X to cut in visual mode
-vnoremap <C-x> "+d
+" Ctrl+C to copy
+vnoremap <C-c> y
+nnoremap <C-c> yy
 
-" Ctrl+C to copy in visual mode
-vnoremap <C-c> "+y
+" Ctrl+X to cut
+vnoremap <C-x> d
+nnoremap <C-x> dd
 
-" Ctrl+V to paste in insert mode
-inoremap <C-v> <C-r>+
+" Ctrl+V to paste
+nnoremap <C-v> p
+vnoremap <C-v> p
+inoremap <C-v> <C-r>"
 
-" Ctrl+V to paste in normal mode (use Ctrl+Q for visual block instead)
-nnoremap <C-v> "+p
+" Ctrl+Q for visual block mode (replaces Ctrl+V)
+nnoremap <C-q> <C-v>
