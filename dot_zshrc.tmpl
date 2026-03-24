@@ -115,4 +115,9 @@ alias claude-clean='rm -rf ~/.claude/debug/'
 setopt NO_BEEP
 
 export EDITOR="nvim"
+{{ if eq .chezmoi.os "linux" -}}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ else if eq .chezmoi.os "darwin" -}}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ end -}}
 export PATH="$HOME/.opencode/bin:$HOME/.local/bin:$HOME/bin:$PATH"
