@@ -1,17 +1,10 @@
-{{ if eq .chezmoi.os "linux" -}}
+{{ if or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu") -}}
 #!/bin/sh
 
 {{ if .runSudo }}
 # System packages
 sudo apt update
 sudo apt install -y zsh vim wget git build-essential make unzip gcc ripgrep tmux
-
-# Homebrew
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# Homebrew packages
-brew install gcc cesarferreira/tap/stax
 
 # GitHub CLI
 (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
@@ -23,6 +16,13 @@ brew install gcc cesarferreira/tap/stax
 	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
 	&& sudo apt update \
 	&& sudo apt install gh -y
+
+# Homebrew
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Homebrew packages
+brew install node cesarferreira/tap/stax
 
 # Default shell
 sudo chsh -s "$(which zsh)" "$USER"
@@ -50,7 +50,7 @@ defaults write -g NSWindowShouldDragOnGesture -bool true
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Homebrew packages
-brew install coreutils wget vim git tmux gh cesarferreira/tap/stax
+brew install coreutils wget vim git tmux gh node cesarferreira/tap/stax
 
 # Claude Code CLI
 curl -fsSL https://claude.ai/install.sh | bash
