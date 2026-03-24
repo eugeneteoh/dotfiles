@@ -89,11 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -114,7 +110,6 @@ alias claude-clean='rm -rf ~/.claude/debug/'
 
 setopt NO_BEEP
 
-export EDITOR="nvim"
 {{ if eq .chezmoi.os "linux" -}}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ else if eq .chezmoi.os "darwin" -}}
