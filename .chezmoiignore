@@ -6,7 +6,3 @@ README.md
 .oh-my-zsh/cache/**
 .oh-my-zsh/**/*.zwc
 
-{{- /* Exclude desktop-only configs on servers */ -}}
-{{- if .isServer -}}
-dot_wezterm.lua
-{{- end -}}
