@@ -23,6 +23,9 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Homebrew packages
 brew install node cesarferreira/tap/stax
+{{ if not .isServer }}
+brew install --cask ghostty
+{{ end }}
 
 # Default shell
 sudo chsh -s "$(which zsh)" "$USER"
@@ -51,6 +54,7 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 
 # Homebrew packages
 brew install coreutils wget vim git tmux gh node cesarferreira/tap/stax
+brew install --cask ghostty
 
 # Claude Code CLI
 curl -fsSL https://claude.ai/install.sh | bash
