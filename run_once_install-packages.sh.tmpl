@@ -1,4 +1,4 @@
-{{ if or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu") -}}
+{{ if and (eq .chezmoi.os "linux") (or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu")) -}}
 #!/bin/sh
 
 {{ if .runSudo }}
@@ -42,6 +42,10 @@ curl -fsSL https://opencode.ai/install | bash
 # Codex CLI
 npm i -g @openai/codex
 
+# Peon Ping
+curl -fsSL https://raw.githubusercontent.com/PeonPing/peon-ping/main/install.sh | bash
+peon-ping-setup
+
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
@@ -64,5 +68,9 @@ curl -fsSL https://opencode.ai/install | bash
 
 # Codex CLI
 npm i -g @openai/codex
+
+# Peon Ping
+curl -fsSL https://raw.githubusercontent.com/PeonPing/peon-ping/main/install.sh | bash
+peon-ping-setup
 
 {{ end -}}
