@@ -24,7 +24,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Homebrew packages
 brew install node cesarferreira/tap/stax
 {{ if not .isServer }}
-brew install --cask ghostty
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
 {{ end }}
 
 # Default shell
