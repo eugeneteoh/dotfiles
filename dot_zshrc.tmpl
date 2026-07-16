@@ -116,3 +116,25 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 {{ end -}}
 export PATH="$HOME/.opencode/bin:$HOME/.local/bin:$HOME/bin:$PATH"
+
+# peon-ping quick controls
+alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
+[ -f "$HOME/.claude/hooks/peon-ping/completions.bash" ] && source "$HOME/.claude/hooks/peon-ping/completions.bash"
+
+# Infinite and timestamped zsh history configuration
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+export HISTFILE=$HOME/.config/zsh/history
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
+# Word navigation: Option/Alt + Left/Right
+bindkey "^[[1;3D" backward-word   # Option+Left
+bindkey "^[[1;3C" forward-word    # Option+Right
+bindkey "^[^[[D" backward-word    # fallback: ESC+Left
+bindkey "^[^[[C" forward-word     # fallback: ESC+Right
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
