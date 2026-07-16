@@ -4,7 +4,7 @@
 {{ if .runSudo }}
 # System packages
 sudo apt update
-sudo apt install -y zsh vim wget git build-essential make unzip gcc ripgrep tmux
+sudo apt install -y zsh vim wget git build-essential make unzip gcc ripgrep tmux python3 nodejs npm
 
 # GitHub CLI
 (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
@@ -56,7 +56,7 @@ defaults write -g NSWindowShouldDragOnGesture -bool true
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Homebrew packages
-brew install coreutils wget vim git tmux gh node cesarferreira/tap/stax
+brew install coreutils wget vim git tmux gh node python3 cesarferreira/tap/stax
 brew install --cask ghostty
 
 # Claude Code CLI
