@@ -1,4 +1,4 @@
-shell-integration-features = ssh-env
+shell-integration-features = ssh-env,ssh-terminfo
 clipboard-write = allow
 clipboard-read = allow
 keybind = performable:cmd+c=copy_to_clipboard

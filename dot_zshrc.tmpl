@@ -1,3 +1,8 @@
+# Fall back if the remote host lacks terminfo for $TERM (e.g. xterm-ghostty over ssh)
+if ! infocmp "$TERM" >/dev/null 2>&1; then
+  export TERM=xterm-256color
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
