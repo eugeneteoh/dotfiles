@@ -151,3 +151,9 @@ bindkey "^[[1;3D" backward-word   # Option+Left
 bindkey "^[[1;3C" forward-word    # Option+Right
 bindkey "^[^[[D" backward-word    # fallback: ESC+Left
 bindkey "^[^[[C" forward-word     # fallback: ESC+Right
+
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+# Nebius CLI
+[ -f "$HOME/.nebius/path.zsh.inc" ] && source "$HOME/.nebius/path.zsh.inc"
+[ -f "$HOME/.nebius/completion.zsh.inc" ] && source "$HOME/.nebius/completion.zsh.inc"
