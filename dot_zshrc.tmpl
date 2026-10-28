@@ -10,6 +10,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Locale. Set before anything spawns a subshell (e.g. brew shellenv), or
+# setlocale warnings break the p10k instant prompt.
+{{ if eq .chezmoi.os "linux" -}}
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+{{ else -}}
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+{{ end }}
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -140,6 +149,3 @@ bindkey "^[[1;3D" backward-word   # Option+Left
 bindkey "^[[1;3C" forward-word    # Option+Right
 bindkey "^[^[[D" backward-word    # fallback: ESC+Left
 bindkey "^[^[[C" forward-word     # fallback: ESC+Right
-
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
