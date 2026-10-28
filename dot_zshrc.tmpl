@@ -157,3 +157,6 @@ command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 # Nebius CLI
 [ -f "$HOME/.nebius/path.zsh.inc" ] && source "$HOME/.nebius/path.zsh.inc"
 [ -f "$HOME/.nebius/completion.zsh.inc" ] && source "$HOME/.nebius/completion.zsh.inc"
+
+# Machine-local config and secrets (not tracked)
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
