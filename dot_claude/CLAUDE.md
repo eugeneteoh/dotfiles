@@ -6,9 +6,9 @@
 - No Claude co-author tag
 - Keep commits atomic (one logical change per commit)
 
-## Code Comments
+## Comments and Docs
 
-- Keep code comments short and concise
+- Keep code comments, docstrings, READMEs, config comments and any other docs short and concise; no verbose prose
 
 ## Pull Requests
 
