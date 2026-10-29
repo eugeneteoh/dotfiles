@@ -406,6 +406,9 @@ tmux_conf_urlscan_options="--compact --dedupe"
 set -g mouse on
 set -ga terminal-overrides ",xterm-ghostty:RGB,xterm-256color:RGB"
 set -s set-clipboard on
+# copy on mouse release but stay scrolled in copy mode
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-no-clear
+bind -T copy-mode MouseDragEnd1Pane send-keys -X copy-pipe-no-clear
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
