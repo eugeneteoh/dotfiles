@@ -22,7 +22,7 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Homebrew packages
-brew install node cesarferreira/tap/stax
+brew install node tmux cesarferreira/tap/stax
 {{ if not .isServer }}
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
 {{ end }}
