@@ -6,9 +6,13 @@
 - No Claude co-author tag
 - Keep commits atomic (one logical change per commit)
 
+## Code style
+
+- Prefer short code with the least abstraction: no helper layers, wrappers, or indirection unless they remove real duplication
+
 ## Comments and Docs
 
-- Keep code comments, docstrings, READMEs, config comments and any other docs short and concise; no verbose prose
+- Keep code comments, docstrings, READMEs, config comments, markdown and any other docs short and concise; say only what is non-obvious, no verbose prose
 
 ## Pull Requests
 
