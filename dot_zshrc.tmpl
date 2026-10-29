@@ -119,7 +119,7 @@ export EDITOR='vim'
 
 alias claude-clean='rm -rf ~/.claude/debug/'
 alias codex='command codex --approve-for-me'
-alias zj='zellij attach -c "$(pwd | sed "s|^/||; s|/|-|g")"'
+alias tm='tmux new -A -s "$(pwd | sed "s|^/||; s|/|-|g")"'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
