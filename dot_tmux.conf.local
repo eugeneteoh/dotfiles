@@ -406,8 +406,8 @@ tmux_conf_urlscan_options="--compact --dedupe"
 set -g mouse on
 set -ga terminal-overrides ",xterm-ghostty:RGB,xterm-256color:RGB"
 set -s set-clipboard on
-# drag only selects; y or C-c copies and clears it, staying scrolled in copy mode
-bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X stop-selection
+# mouse release, y or C-c copies and clears the selection, staying scrolled in copy mode
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe
 bind -T copy-mode-vi MouseDown1Pane select-pane \; send-keys -X clear-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe
 bind -T copy-mode-vi C-c send-keys -X copy-pipe
