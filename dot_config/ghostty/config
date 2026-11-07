@@ -1,4 +1,5 @@
 shell-integration-features = ssh-env,ssh-terminfo
 clipboard-write = allow
 clipboard-read = allow
-keybind = performable:cmd+c=copy_to_clipboard
+# Not performable: the fallback sends a bare "c" to vim, which deletes the selection
+keybind = cmd+c=copy_to_clipboard
