@@ -12,7 +12,7 @@ jobs:
       env:
         CODESPACES: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
       - run: ./install.sh --promptBool isServer=true
       - name: chezmoi data
         run: '"$HOME/bin/chezmoi" data'
