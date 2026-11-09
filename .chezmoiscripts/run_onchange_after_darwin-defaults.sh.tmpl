@@ -1,0 +1,10 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write -g NSWindowShouldDragOnGesture -bool true
+
+# Fast key repeat (units of 15ms; System Settings minimums are 2 and 15). Takes effect after logout.
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+{{ end -}}
