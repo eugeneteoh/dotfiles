@@ -1,0 +1,7 @@
+packages:
+  darwin:
+    brews: [coreutils, wget, vim, git, gh, python3, node, tmux, fzf, cesarferreira/tap/stax]
+    casks: [ghostty]
+  linux:
+    apt: [zsh, vim, wget, git, build-essential, make, unzip, gcc, ripgrep, tmux, python3, nodejs, npm]
+    brews: [node, tmux, fzf, cesarferreira/tap/stax]

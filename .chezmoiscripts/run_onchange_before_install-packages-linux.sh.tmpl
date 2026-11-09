@@ -1,0 +1,39 @@
+{{ if and (eq .chezmoi.os "linux") (or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu")) -}}
+#!/bin/bash
+# Week {{ div (now | unixEpoch) 604800 }}: changes weekly so this re-runs and upgrades
+
+{{ if .runSudo -}}
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y {{ .packages.linux.apt | join " " }}
+
+# GitHub CLI
+if ! command -v gh >/dev/null; then
+	sudo mkdir -p -m 755 /etc/apt/keyrings \
+	&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
+fi
+
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+brew update
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.linux.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+EOF
+{{ if not .isServer -}}
+command -v ghostty >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+{{ end -}}
+
+[ "$(basename "$SHELL")" = zsh ] || sudo chsh -s "$(which zsh)" "$USER"
+{{ else -}}
+[ "$(basename "$SHELL")" = zsh ] || chsh -s "$(which zsh)" "$USER"
+{{ end -}}
+{{ end -}}

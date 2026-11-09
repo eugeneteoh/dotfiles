@@ -1,0 +1,8 @@
+{{ if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+# Week {{ div (now | unixEpoch) 604800 }}: changes weekly so this re-runs and upgrades
+
+if command -v claude >/dev/null; then claude update; else curl -fsSL https://claude.ai/install.sh | bash; fi
+npm i -g @openai/codex@latest
+if [ -d "$HOME/.claude/hooks/peon-ping" ]; then bash "$HOME/.claude/hooks/peon-ping/peon.sh" update; else curl -fsSL https://raw.githubusercontent.com/PeonPing/peon-ping/main/install.sh | bash; fi
+{{ end -}}
