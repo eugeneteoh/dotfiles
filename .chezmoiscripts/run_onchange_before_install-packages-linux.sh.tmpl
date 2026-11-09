@@ -32,8 +32,8 @@ EOF
 command -v ghostty >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
 {{ end -}}
 
-[ "$(basename "$SHELL")" = zsh ] || sudo chsh -s "$(which zsh)" "$USER"
+[ "$(basename "$SHELL")" = zsh ] || sudo chsh -s "$(which zsh)" "$(id -un)"
 {{ else -}}
-[ "$(basename "$SHELL")" = zsh ] || chsh -s "$(which zsh)" "$USER"
+[ "$(basename "$SHELL")" = zsh ] || chsh -s "$(which zsh)" "$(id -un)"
 {{ end -}}
 {{ end -}}
