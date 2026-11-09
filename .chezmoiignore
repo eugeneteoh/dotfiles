@@ -6,3 +6,6 @@ README.md
 .oh-my-zsh/cache/**
 .oh-my-zsh/**/*.zwc
 
+{{ if .isServer }}
+.config/ghostty
+{{ end }}
