@@ -33,3 +33,7 @@ gh stack sync --prune            # after a PR merges: fetch, rebase, push, clean
 
 - One small, focused PR per branch; a branch can have multiple commits
 - After editing a lower branch, run `gh stack rebase` to propagate the change up the stack
+
+## Problem solving
+
+- When troubleshooting or solving a problem, search online for current best practices (official docs first) before recommending a fix, and cite sources
