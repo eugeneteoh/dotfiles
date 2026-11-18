@@ -1,10 +1,19 @@
 # Personal Claude Instructions
 
+@~/.claude/private.md
+
 ## Git Commits
 
 - Use one-line commit messages
-- No Claude co-author tag
+- Never add Co-Authored-By or other Claude trailers
 - Keep commits atomic (one logical change per commit)
+
+## Git & dotfiles
+
+- When pushing dotfiles to chezmoi, commit only the files I named
+- Private instructions go in `~/.claude/private.md` (untracked); never add it or other private config to chezmoi
+- On `chezmoi apply`, exclude files that would overwrite private local config
+- If a push or command fails, diagnose and fix it yourself rather than handing it back to me
 
 ## Code style
 
@@ -37,3 +46,4 @@ gh stack sync --prune            # after a PR merges: fetch, rebase, push, clean
 ## Problem solving
 
 - When troubleshooting or solving a problem, search online for current best practices (official docs first) before recommending a fix, and cite sources
+- For conceptual, technical or research questions, search online sources (papers, docs) before answering, and cite what you found
