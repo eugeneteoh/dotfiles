@@ -25,7 +25,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew update
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.linux.brews -}}
-brew {{ . | quote }}
+brew {{ . | quote }}{{ if contains "/" . }}, trusted: true{{ end }}
 {{ end -}}
 EOF
 {{ if not .isServer -}}

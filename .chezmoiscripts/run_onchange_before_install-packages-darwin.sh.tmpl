@@ -8,7 +8,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.brews -}}
-brew {{ . | quote }}
+brew {{ . | quote }}{{ if contains "/" . }}, trusted: true{{ end }}
 {{ end -}}
 {{ range .packages.darwin.casks -}}
 cask {{ . | quote }}
