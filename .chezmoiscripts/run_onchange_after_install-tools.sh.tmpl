@@ -4,5 +4,4 @@
 
 if command -v claude >/dev/null; then claude update; else curl -fsSL https://claude.ai/install.sh | bash; fi
 npm i -g @openai/codex@latest
-if [ -d "$HOME/.claude/hooks/peon-ping" ]; then bash "$HOME/.claude/hooks/peon-ping/peon.sh" update; else curl -fsSL https://raw.githubusercontent.com/PeonPing/peon-ping/main/install.sh | bash; fi
 {{ end -}}
