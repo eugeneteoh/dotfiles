@@ -19,6 +19,10 @@
 
 - Prefer short code with the least abstraction: no helper layers, wrappers, or indirection unless they remove real duplication
 
+## Code navigation
+
+- Always use the LSP tool to read and navigate code (definitions, references, symbols); grep only for non-code text or when the language server has no answer
+
 ## Comments and Docs
 
 - Keep code comments, docstrings, READMEs, config comments, markdown and any other docs short and concise; say only what is non-obvious, no verbose prose
@@ -42,6 +46,16 @@ gh stack sync --prune            # after a PR merges: fetch, rebase, push, clean
 
 - One small, focused PR per branch; a branch can have multiple commits
 - After editing a lower branch, run `gh stack rebase` to propagate the change up the stack
+
+## Context systems
+
+Follows Notion's [A New Shape for Work](https://www.notion.com/a-new-shape-for-work): shared context first, then shared automations ("factories") on top.
+
+- Each kind of information has one home; link, never copy. The repo's `AGENTS.md` says where things go
+- Findings, decisions and next steps go into the context system of the work they belong to, not only chat or agent memory
+- Read the existing context (Notion, issues, PRs) before proposing new work
+- When the same workflow comes up a third time, propose a skill for it. Start with the simplest version; fix observed failures, not imagined ones
+- A new automation that writes somewhere shared or outward-facing starts as a shadow run: it drafts, I review
 
 ## Problem solving
 
